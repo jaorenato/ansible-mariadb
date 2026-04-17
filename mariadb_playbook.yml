@@ -3,14 +3,15 @@
   hosts: dbservers
   become: yes
 
+  # Passo do Desafio: Carrega as variáveis sensíveis do Ansible Vault
+  vars_files:
+    - vars_crypto.yml
+
   vars:
-    db_root_password: "SenhaSeguraDoRoot123"
     app_db_name: "lab_db"
     app_db_user: "lab_user"
-    app_db_password: "SenhaDificil123"
 
   tasks:
-
     - name: Instalar pacotes do MariaDB e dependências
       dnf:
         name:
